@@ -37,9 +37,14 @@ sudo docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -
 
 sudo docker ps -a
 
-----------------------------------------------------
 http://xx.xx.xx.xx:9000
-
 ----------------------------------------------------
+How to Update Portainer to the Newest Version
+sudo docker stop portainer && sudo docker rm portainer
 
-https://raw.githubusercontent.com/TheLustriVA/portainer-templates-Nov-2022-collection/main/mlva-templates-2.0-deduped.json
+docker pull portainer/portainer-ce:latest
+
+docker run -d -p 9000:9000 -p 8000:8000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+Now you can go to http://your-server-address:9000 and login.
+----------------------------------------------------
